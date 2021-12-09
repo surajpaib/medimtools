@@ -3,6 +3,7 @@ argon2-cffi==21.2.0
 argon2-cffi-bindings==21.2.0
 attrs==21.2.0
 backcall==0.2.0
+backports.entry-points-selectable==1.1.1
 bleach==4.1.0
 certifi==2021.10.8
 cffi==1.15.0
@@ -11,7 +12,9 @@ cycler==0.11.0
 debugpy==1.5.1
 decorator==5.1.0
 defusedxml==0.7.1
+distlib==0.3.4
 entrypoints==0.3
+filelock==3.4.0
 fonttools==4.28.3
 importlib-metadata==4.8.2
 importlib-resources==5.4.0
@@ -48,6 +51,7 @@ parso==0.8.3
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==8.4.0
+platformdirs==2.4.0
 pluggy==1.0.0
 prometheus-client==0.12.0
 prompt-toolkit==3.0.23
@@ -71,8 +75,11 @@ testpath==0.5.0
 toml==0.10.2
 tomli==1.2.2
 tornado==6.1
+tox==3.24.4
+tox-travis==0.12
 traitlets==5.1.1
 typing_extensions==4.0.1
+virtualenv==20.10.0
 wcwidth==0.2.5
 webencodings==0.5.1
 widgetsnbextension==3.5.2
