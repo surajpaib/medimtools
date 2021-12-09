@@ -6,7 +6,6 @@ import pytest
 
 from click.testing import CliRunner
 
-from medimtools import medimtools
 from medimtools import cli
 
 
@@ -20,6 +19,14 @@ def response():
     # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
+def test_viz():
+    import SimpleITK as sitk
+    import numpy as np
+    from medimtools.viz.sitk import quick_view
+
+    image = sitk.Image(256, 256, 32, sitk.sitkInt16)
+    assert type(quick_view(image)) == np.ndarray
+    
 def test_content(response):
     """Sample pytest test function with the pytest fixture as an argument."""
     # from bs4 import BeautifulSoup
