@@ -42,9 +42,12 @@ def get_image_preview(sitk_image, orientation='horizontal'):
         preview_image = padded_stack((middle_axial, middle_sagittal, middle_coronal), \
             orientation=orientation)
 
+    elif dims == 2:
+        preview_image = sitk.GetArrayFromImage(sitk_image)
+
     else:
-        logger.error("Image preview not implemented for 2D and 4D images")
-        return  # TODO: implement for 2D and 4D
+        logger.error("Image preview not implemented for 4D images")
+        return  # TODO: implement for 4D
     return preview_image                         
 
 
@@ -84,3 +87,21 @@ def padded_stack(arrays, orientation='vertical'):
         arrays = [pad_to(arr, max(dims), index) for arr in arrays]
 
     return stack_fn(arrays)    
+
+
+def overlay_mask(image, mask, contour=False):
+    # [0,255] for visualization purposes
+    image = sitk.Cast(sitk.RescaleIntensity(image, 0, 255), sitk.sitkUInt8)
+
+    if contour: 
+        image =  sitk.LabelMapContourOverlay(sitk.Cast(mask, sitk.sitkLabelUInt8),
+                                    image, 
+                                    opacity=1,
+                                    contourThickness=[4, 4],
+                                    dilationRadius=[3, 3], 
+                                    colormap=[255, 0, 0])[:, :]
+
+    else:
+        image = sitk.LabelOverlay(image, mask, opacity=0.8, colormap=[255, 0, 0])[:, :]
+
+    return image
