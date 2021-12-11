@@ -10,7 +10,9 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=7.0', ]
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 
 test_requirements = ['pytest>=3', ]
 
@@ -42,7 +44,7 @@ setup(
     name='medimtools',
     packages=find_packages(include=['medimtools', 'medimtools.*']),
     test_suite='tests',
-    tests_require=test_requirements,
+    tests_require=requirements+test_requirements,
     url='https://github.com/surajpaib/medimtools',
     version='0.1.0',
     zip_safe=False,
