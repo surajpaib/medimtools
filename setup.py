@@ -11,9 +11,11 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 
-requirements = ['Click>=7.0', ]
+with open('requirements.txt') as req_file:
+    requirements = req_file.read()
 
-test_requirements = ['pytest>=3', ]
+
+test_requirements = ['pytest>=3', *requirements]
 
 setup(
     author="Suraj Pai",
