@@ -12,8 +12,7 @@ with open('HISTORY.rst') as history_file:
 
 
 with open('requirements.txt') as req_file:
-    requirements = req_file.read()
-
+    requirements = [line.rstrip() for line in req_file]
 
 test_requirements = ['pytest>=3', *requirements]
 
