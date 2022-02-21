@@ -6,18 +6,12 @@ medimtools
 .. image:: https://img.shields.io/pypi/v/medimtools.svg
         :target: https://pypi.python.org/pypi/medimtools
 
-.. image:: https://img.shields.io/travis/surajpaib/medimtools.svg
-        :target: https://travis-ci.com/surajpaib/medimtools
+.. image:: https://github.com/surajpaib/medimtools/actions/workflows/python-publish.yml/badge.svg
+        :target: https://github.com/surajpaib/medimtools/actions/workflows/python-publish.yml
 
 .. image:: https://readthedocs.org/projects/medimtools/badge/?version=latest
         :target: https://medimtools.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
-
-
-.. image:: https://pyup.io/repos/github/surajpaib/medimtools/shield.svg
-     :target: https://pyup.io/repos/github/surajpaib/medimtools/
-     :alt: Updates
-
 
 
 Python Boilerplate contains all the boilerplate you need to create a Python package.
