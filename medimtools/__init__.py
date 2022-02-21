@@ -2,4 +2,4 @@
 
 __author__ = """Suraj Pai"""
 __email__ = "b.pai@maastrichtuniversity.nl"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
