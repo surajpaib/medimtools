@@ -3,7 +3,14 @@ import matplotlib.pyplot as plt
 from medimtools.viz.ops import *
 
 
-def quick_view(image: sitk.Image, display: bool = True, isotropic: bool = True, cmap: str = 'gray', mask = None, contour = None):
+def quick_view(
+    image: sitk.Image,
+    display: bool = True,
+    isotropic: bool = True,
+    cmap: str = "gray",
+    mask=None,
+    contour=None,
+):
     if isotropic:
         image = make_isotropic(image)
 
@@ -16,16 +23,7 @@ def quick_view(image: sitk.Image, display: bool = True, isotropic: bool = True, 
     image = get_image_preview(image)
 
     if display:
-        f = plt.figure(figsize=(20, 10))
         plt.imshow(image)
         plt.show()
 
     return image
-
-    
-
-
-
-
-
-
