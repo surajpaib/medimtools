@@ -25,21 +25,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Install bumpver
+      - name: Install bumpversion
         run: |
           pip install -U pip
-          pip install bumpver
+          pip install bumpversion
 
       # Runs a single command using the runners shell
       - name: Bump version to patch with bumpver
         if: contains(github.event.head_commit.message, '[PATCH]')
         run: |
-          bumpver update --patch 
+          bumpversion patch 
       - name: Bump version to minor with bumpver
         if: contains(github.event.head_commit.message, '[MINOR]')
         run: |
-          bumpver update --minor 
+          bumpversion minor 
       - name: Bump version to major with bumpver
         if: contains(github.event.head_commit.message, '[MAJOR]')
         run: |
-          bumpver update --major
+          bumpversion major
