@@ -10,30 +10,26 @@ on:
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: config github
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
       - name: Install bumpversion
         run: |
           pip install -U pip
           pip install bumpversion
+
+      - name: config github
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
 
       # Runs a single command using the runners shell
       - name: Bump version to patch with bumpversion
