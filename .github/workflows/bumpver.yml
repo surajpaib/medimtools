@@ -28,8 +28,8 @@ jobs:
 
       - name: config github
         run: |
-          git config --global user.name github-actions
-          git config --global user.email github-actions@github.com
+          git config --global user.name surajpaib
+          git config --global user.email b.pai@maastrichtuniversity.nl
 
       # Runs a single command using the runners shell
       - name: Bump version to patch with bumpversion
