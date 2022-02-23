@@ -26,11 +26,6 @@ jobs:
           pip install -U pip
           pip install bumpversion
 
-      - name: config github
-        run: |
-          git config --global user.name github-actions
-          git config --global user.email github-actions@github.com
-
       # Runs a single command using the runners shell
       - name: Bump version to patch with bumpversion
         if: contains(github.event.head_commit.message, '[PATCH]')
@@ -45,6 +40,4 @@ jobs:
         run: |
           bumpversion major
 
-      - name: Push changes
-        run: |
-          git push --tags
+      - uses: stefanzweifel/git-auto-commit-action@v4
