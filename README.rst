@@ -2,6 +2,7 @@
 medimtools
 ==========
 
+A python package containing all the tools you might ever need (allegedly) for medical imaging
 
 .. image:: https://img.shields.io/pypi/v/medimtools.svg
         :target: https://pypi.python.org/pypi/medimtools
@@ -12,9 +13,6 @@ medimtools
 .. image:: https://readthedocs.org/projects/medimtools/badge/?version=latest
         :target: https://medimtools.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
-
-
-Python Boilerplate contains all the boilerplate you need to create a Python package.
 
 
 * Free software: MIT license
