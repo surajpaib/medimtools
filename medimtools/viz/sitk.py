@@ -36,7 +36,7 @@ def quick_view(
     image = get_image_preview(image)
 
     if display:
-        plt.imshow(image)
+        plt.imshow(image, cmap=cmap)
         plt.show()
 
     return image
