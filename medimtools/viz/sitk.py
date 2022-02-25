@@ -1,6 +1,7 @@
 import SimpleITK as sitk
 import matplotlib.pyplot as plt
 from medimtools.viz.ops import *
+from sklearn import isotonic
 
 
 def quick_view(
@@ -18,7 +19,15 @@ def quick_view(
     if isotropic:
         image = make_isotropic(image)
 
+        if mask:
+            mask = make_isotropic(mask, interpolator=sitk.sitkNearestNeighbor)
+
+        if contour:
+            contour = make_isotropic(contour, interpolator=sitk.sitkNearestNeighbor)
+
+
     if mask:
+       
         image = overlay_mask(image, mask)
 
     if contour:
