@@ -9,6 +9,7 @@ def quick_view(
     cmap: str = "gray",
     mask=None,
     contour=None,
+    coords=None,
 ):
 
     if int(image.GetPixelID()) != 1:
@@ -31,7 +32,7 @@ def quick_view(
     if contour:
         image = overlay_mask(image, contour, contour=True)
 
-    image = get_image_preview(image)
+    image = get_image_preview(image, coords=coords)
 
     if display:
         plt.imshow(image, cmap=cmap)
