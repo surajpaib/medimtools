@@ -11,8 +11,10 @@ def quick_view(
     contour=None,
 ):
 
-    # [0,255] for visualization purposes
-    image = sitk.Cast(sitk.RescaleIntensity(image, 0, 255), sitk.sitkUInt8)
+    if int(image.GetPixelID()) != 1:
+        logger.info("Rescaling image ...")
+        # [0,255] for visualization purposes
+        image = sitk.Cast(sitk.RescaleIntensity(image, 0, 255), sitk.sitkUInt8)
 
     if isotropic:
         image = make_isotropic(image)
