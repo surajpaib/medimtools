@@ -113,16 +113,9 @@ def overlay_mask(image, mask, contour=False):
     image = sitk.Cast(sitk.RescaleIntensity(image, 0, 255), sitk.sitkUInt8)
 
     if contour:
-        image = sitk.LabelMapContourOverlay(
-            sitk.Cast(mask, sitk.sitkLabelUInt8),
-            image,
-            opacity=1,
-            contourThickness=[4, 4],
-            dilationRadius=[3, 3],
-            colormap=[255, 0, 0],
-        )[:, :]
+        filter = sitk.LabelContourImageFilter()
+        mask = filter.Execute(mask)
 
-    else:
-        image = sitk.LabelOverlay(image, mask, opacity=0.8, colormap=[255, 0, 0])[:, :]
+    image = sitk.LabelOverlay(image, mask, opacity=1, colormap=[255, 0, 0])[:, :]
 
     return image
