@@ -31,7 +31,7 @@ def make_isotropic(image, interpolator=sitk.sitkLinear):
         image.GetOrigin(),
         new_spacing,
         image.GetDirection(),
-        0,
+        -1024,
         image.GetPixelID(),
     )
 
@@ -109,9 +109,6 @@ def padded_stack(arrays, orientation="vertical"):
 
 
 def overlay_mask(image, mask, contour=False):
-    # [0,255] for visualization purposes
-    image = sitk.Cast(sitk.RescaleIntensity(image, 0, 255), sitk.sitkUInt8)
-
     if contour:
         filter = sitk.LabelContourImageFilter()
         mask = filter.Execute(mask)
