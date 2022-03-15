@@ -36,17 +36,28 @@ def make_isotropic(image, interpolator=sitk.sitkLinear):
     )
 
 
-def get_image_preview(sitk_image, orientation="horizontal"):
+def get_image_preview(sitk_image, orientation="horizontal", coords=None):
     """Saves a preview image for a given SimpleITK object. In case of 3D image, saves
     an image combined of middle slices from axial, coronal and saggital views.
     """
     dims = sitk_image.GetDimension()
+    image = sitk.GetArrayFromImage(sitk_image)
+
+    _coords = [image.shape[idx]//2 for idx in range(3)] 
+
+    if coords is not None:
+        # SITK to numpy is x,y,z -> z,x,y 
+        coords = [coords[2], coords[0], coords[1]]
+        coords = [coord if coord != -1 else _coords[idx] for idx, coord in enumerate(coords)]
+    else:
+        coords = _coords
 
     if dims == 3:
-        image = sitk.GetArrayFromImage(sitk_image)
-        middle_axial = image[image.shape[0] // 2]
-        middle_sagittal = image[:, :, image.shape[2] // 2]
-        middle_coronal = image[:, image.shape[1] // 2]
+        middle_axial = image[coords[0]]
+        middle_coronal = image[:, coords[1]]
+        middle_sagittal = image[:, :, coords[2]]
+
+        # Flip for correct visual 
         middle_sagittal = np.flipud(middle_sagittal)
         middle_coronal = np.flipud(middle_coronal)
 
@@ -55,7 +66,7 @@ def get_image_preview(sitk_image, orientation="horizontal"):
         )
 
     elif dims == 2:
-        preview_image = sitk.GetArrayFromImage(sitk_image)
+        preview_image = image
 
     else:
         logger.error("Image preview not implemented for 4D images")
