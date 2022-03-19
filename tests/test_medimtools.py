@@ -26,7 +26,8 @@ def test_viz():
 
     image = sitk.Image(256, 256, 32, sitk.sitkInt16)
     assert type(quick_view(image)) == np.ndarray
-    
+
+
 def test_content(response):
     """Sample pytest test function with the pytest fixture as an argument."""
     # from bs4 import BeautifulSoup
@@ -38,7 +39,7 @@ def test_command_line_interface():
     runner = CliRunner()
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
-    assert 'medimtools.cli.main' in result.output
-    help_result = runner.invoke(cli.main, ['--help'])
+    assert "medimtools.cli.main" in result.output
+    help_result = runner.invoke(cli.main, ["--help"])
     assert help_result.exit_code == 0
-    assert '--help  Show this message and exit.' in help_result.output
+    assert "--help  Show this message and exit." in help_result.output
