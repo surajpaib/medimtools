@@ -36,10 +36,14 @@ def quick_view(
         mask = get_image_preview(mask, coords=coords)
 
     if display:
-        plt.imshow(image, cmap=cmap)
+        plt.imshow(image, cmap="gray")
 
         if mask is not None:
-            plt.imshow(mask, cmap=cmap, alpha=0.5)
+            mask_3_channel = np.zeros((*mask.shape, 3), dtype=np.uint8)
+            # Set red channel to mask values
+            mask_3_channel[:, :, 0] = mask
+
+            plt.imshow(mask_3_channel, alpha=0.5)
 
         plt.show()
 

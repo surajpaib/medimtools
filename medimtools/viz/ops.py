@@ -126,13 +126,3 @@ def get_contour(mask):
     mask = filter.Execute(mask)
 
     return mask
-
-
-def overlay_mask(image, mask, contour=False):
-    if contour:
-        filter = sitk.LabelContourImageFilter()
-        mask = filter.Execute(mask)
-
-    image = sitk.LabelOverlay(image, mask, colormap=[255, 0, 0])[:, :]
-
-    return image
