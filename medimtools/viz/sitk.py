@@ -11,10 +11,11 @@ def quick_view(
     mask=None,
     contour=None,
     coords=None,
+    label=None,
 ):
 
     if int(image.GetPixelID()) != 1:
-        logger.info("Rescaling image for vizualization ...")
+        logger.debug("Rescaling image for vizualization ...")
         # [0,255] for visualization purposes
         image = sitk.Cast(sitk.RescaleIntensity(image, 0, 255), sitk.sitkUInt8)
 
@@ -44,6 +45,9 @@ def quick_view(
             mask_3_channel[:, :, 0] = mask
 
             plt.imshow(mask_3_channel, alpha=0.5)
+
+        if label:
+            plt.title(label)
 
         plt.show()
 
