@@ -19,9 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        with:
-          github-token: ${{ secrets.PAT }}
+      - uses: actions/checkout@v1
           
       - name: Install bumpversion
         run: |
