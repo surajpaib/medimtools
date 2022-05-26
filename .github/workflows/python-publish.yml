@@ -10,12 +10,12 @@ name: Upload Python Package
 
 on:
   push:
-    tags: 
-      - v*
+    branches: [master]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
