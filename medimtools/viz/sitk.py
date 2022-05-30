@@ -12,7 +12,9 @@ def quick_view(
     contour=None,
     coords=None,
     label=None,
+    normalize=False,
 ):
+
 
     if int(image.GetPixelID()) != 1:
         logger.debug("Rescaling image for vizualization ...")

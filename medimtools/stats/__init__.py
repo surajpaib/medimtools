@@ -11,4 +11,8 @@ def get_stats(image):
         "max": filter.GetMaximum(),
         "mean": filter.GetMean(),
         "std": filter.GetSigma(),
+        "size": image.GetSize(),
+        "spacing": image.GetSpacing(),
+        "origin": image.GetOrigin(),
+        "direction": image.GetDirection(),
     }
