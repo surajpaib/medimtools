@@ -15,7 +15,6 @@ def quick_view(
     normalize=False,
 ):
 
-
     if int(image.GetPixelID()) != 1:
         logger.debug("Rescaling image for vizualization ...")
         # [0,255] for visualization purposes
