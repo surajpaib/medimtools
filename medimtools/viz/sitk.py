@@ -43,7 +43,7 @@ def quick_view(
         if mask is not None:
             mask_3_channel = np.zeros((*mask.shape, 3), dtype=np.uint8)
             # Set red channel to mask values
-            mask_3_channel[:, :, 0] = mask
+            mask_3_channel[:, :, 0] = mask * 255
 
             plt.imshow(mask_3_channel, alpha=0.5)
 
