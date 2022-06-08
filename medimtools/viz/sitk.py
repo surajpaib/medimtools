@@ -13,6 +13,7 @@ def quick_view(
     coords=None,
     label=None,
     normalize=False,
+    ax=None,
 ):
 
     if int(image.GetPixelID()) != 1:
@@ -36,20 +37,31 @@ def quick_view(
 
     if mask:
         mask = get_image_preview(mask, coords=coords)
+        mask_3_channel = np.zeros((*mask.shape, 3), dtype=np.uint8)
+            # Set red channel to mask values
+        mask_3_channel[:, :, 0] = mask * 255
 
     if display:
-        plt.imshow(image, cmap="gray")
+
+        if ax:
+            ax.imshow(image, cmap=cmap)
+        else:
+            plt.imshow(image, cmap="gray")
 
         if mask is not None:
-            mask_3_channel = np.zeros((*mask.shape, 3), dtype=np.uint8)
-            # Set red channel to mask values
-            mask_3_channel[:, :, 0] = mask * 255
-
-            plt.imshow(mask_3_channel, alpha=0.5)
+       
+            if ax:
+                ax.imshow(mask_3_channel, alpha=0.5)
+            else:
+                plt.imshow(mask_3_channel, alpha=0.5)
 
         if label:
-            plt.title(label)
+            if ax:
+                ax.title.set_text(label)
+            else:
+                plt.title(label)
 
+    if not ax:
         plt.show()
 
     return image
